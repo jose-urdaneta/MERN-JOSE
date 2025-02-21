@@ -1,6 +1,6 @@
 // Problema X: ¿Cuál crees que es la salida de este código?
 
-    // La salida es: eje, mp, lo
+// La salida es: eje, mp, lo
 
 // ¿La salida del código fue la misma que creíste en un principio?
 
@@ -16,31 +16,35 @@ console.log(arregloEjemplo);
 
 // 1. Anota la salida que piensas que va a dar el código
 
-    //eje, mp, lo
+//eje, mp, lo
 
 // 2. Anota la salida que muestra el código
 
-    // [ 'eje', 'mp', 'lo' ]
+// [ 'eje', 'mp', 'lo' ]
 
 // 3. Anota tus comentarios, explicaciones, teorías, etc. en este espacio
 
-   // Basicamente esta imprimiendo el el arreglo
+// Basicamente esta imprimiendo el el arreglo
 
-   //  1. Examina la desestructuración en objetos anidados con un enfoque en propiedades que podrían no existir.
-   //Respuesta: Salario sera Undefined se debe igualar para que envie un dato 
+//  1. Examina la desestructuración en objetos anidados con un enfoque en propiedades que podrían no existir.
+//Respuesta: Salario sera Undefined se debe igualar para que envie un dato
 
-   const info = {
-    personal: {
-        nombre: 'Carlos',
-        apellido: 'Vega',
-        detalles: {
-            edad: 30,
-            ocupacion: 'Ingeniero'
-        }
-    }
+const info = {
+  personal: {
+    nombre: "Carlos",
+    apellido: "Vega",
+    detalles: {
+      edad: 30,
+      ocupacion: "Ingeniero",
+    },
+  },
 };
 
-const { personal: { detalles: { edad, salario } } } = info;
+const {
+  personal: {
+    detalles: { edad, salario },
+  },
+} = info;
 console.log(edad);
 console.log(salario);
 
@@ -62,32 +66,28 @@ console.log(resultado);
 // Respuesta : Pero si imprime VAR debido a que tiene alcance
 
 function verificar() {
+  if (true) {
+    const a = 2;
 
-    if (true) {
+    let b = 3;
 
-        const a = 2;
+    var c = 4;
+  }
 
-        let b = 3;
+  console.log(c);
 
-        var c = 4;
+  console.log(a);
 
-    }
-
-    console.log(c);
-
-    console.log(a);
-
-    console.log(b);
-
+  console.log(b);
 }
 
 verificar();
 
 // 4. Explora el comportamiento de JavaScript cuando se manipulan propiedades de un objeto inmutable.
 
-// Respuesta El object.freeze, crea y mantiene el objeto no importa se otro lo setea mantiene su valor original 
+// Respuesta El object.freeze, crea y mantiene el objeto no importa se otro lo setea mantiene su valor original
 
-const datos = Object.freeze({ nombre: 'Luis', edad: 29 });
+const datos = Object.freeze({ nombre: "Luis", edad: 29 });
 
 datos.edad = 30;
 
@@ -98,7 +98,7 @@ console.log(datos.edad);
 
 const original = [1, 2, 3];
 
-const nuevo = original.concat(6,"Oso Polar", "Aprendo");
+const nuevo = original.concat(6, "Oso Polar", "Aprendo");
 
 console.log(original);
 
@@ -106,9 +106,9 @@ console.log(nuevo);
 
 //6. ¿Por qué el código produjo esa salida? ¿Cómo obtendrías el valor del tercer índice?
 
-// Hay que declara el tercer objeto del array e imprimirlo 
+// Hay que declara el tercer objeto del array e imprimirlo
 
-const frutas = ['manzana', 'naranja', 'pera', 'mango'];
+const frutas = ["manzana", "naranja", "pera", "mango"];
 
 const [primera, segunda, tercero] = frutas;
 
@@ -118,8 +118,7 @@ console.log(segunda);
 
 console.log(tercero);
 
-
-const frutas = ['manzana', 'naranja', 'pera', 'mango'];
+const frutas = ["manzana", "naranja", "pera", "mango"];
 
 const [primera, segunda] = frutas;
 
@@ -132,18 +131,12 @@ console.log(segunda);
 // Imprime del 0 y 1 3 Veces
 
 for (let i = 0; i < 3; i++) {
-
-    for (let i = 0; i < 2; i++) {
-
-        console.log(i);
-
-    }
-
+  for (let i = 0; i < 2; i++) {
+    console.log(i);
+  }
 }
 
 //8. Operador Spread en Objetos ¿Por qué el código produjo esa salida? ¿Cómo solucionarías un problema si quisieras evitar sobrescribir la propiedad ‘b’?
-
-
 
 const objeto1 = { a: 1, b: 2 };
 
@@ -153,5 +146,46 @@ const combinado = { ...objeto1, ...objeto2 };
 
 console.log(combinado);
 
+// Para evitar el spread en el objeto2 se puede hacer lo siguiente:
 
+const objeto1 = { a: 1, b: 2 };
 
+const objeto2 = { b: 3, c: 4 };
+
+const combinado = { ...objeto1, ...objeto2, b: objeto1.b }; // donde el valor de objeto2.b es =  al objeto1.b
+
+console.log(combinado);
+
+// 9. Uso del operador Spread para combinar arrays. Analiza cómo se combinan los arrays y qué sucede con los elementos duplicados.
+// Respuesta: imprime los dos Arrays
+
+const numeros1 = [1, 2, 3];
+
+const numeros2 = [3, 4, 5];
+
+const combinados = [...numeros1, ...numeros2];
+
+console.log(combinados);
+
+// //10. Alcance y captura de variables en una función. Explora
+// //el ámbito de las variables dentro de una función y cómo esto afecta su visibilidad.
+
+// El Let solo No se puede redeclarar en el mismo ambito por lo quee edad = 25 pero al ser nombre VAR si se solapa nombre = Luis
+
+function demostracion() {
+  var nombre = "Ana";
+
+  let edad = 25;
+
+  if (true) {
+    var nombre = "Luis";
+
+    let edad = 30;
+  }
+
+  console.log(nombre);
+
+  console.log(edad);
+}
+
+demostracion();

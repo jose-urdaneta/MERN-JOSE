@@ -1,0 +1,13 @@
+#root {
+  text-align: center;
+}
+
+.tarjeta {
+  padding: 20px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: lighter;
+  background-color: lightblue;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
